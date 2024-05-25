@@ -1,6 +1,6 @@
 # PyTorch
 
-PyTorch is a popular framework for building and training neural networks. It offers a dynamic computational graph, which can adapt to various input shapes and sizes across multiple calls, making it ideal for tasks such as image classification with vastly different image dimensions 1 . Developed by Meta in 2016 on top of the Lua-based Torch package, PyTorch has significantly grown in popularity due to its simplicity in building and training neural networks efficiently 2 .
+PyTorch is a popular framework for building and training neural networks. It offers a dynamic computational graph, which can adapt to various input shapes and sizes across multiple calls, making it ideal for tasks such as image classification with vastly different image dimensions  . Developed by Meta in 2016 on top of the Lua-based Torch package, PyTorch has significantly grown in popularity due to its simplicity in building and training neural networks efficiently  .
 
 # Overview of PyTorch:
 
