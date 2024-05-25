@@ -27,112 +27,11 @@ Image Processing:
 Due to its adaptability to various input shapes, PyTorch is highly suitable for image-related tasks like image classification and object detection. Its versatility in handling different input dimensions makes it an ideal choice for tasks involving images of varying sizes 1 .
 In conclusion, PyTorch is a powerful and flexible framework for building and training neural networks, offering particular advantages for tasks involving image processing and classification tasks with varying input sizes 
 
-
-
-
-
-
-PyTorch is a Python package that provides two high-level features:
-
-Tensor computation (like NumPy) with strong GPU acceleration
-Deep neural networks built on a tape-based autograd system
-You can reuse your favorite Python packages such as NumPy, SciPy, and Cython to extend PyTorch when needed.
-
-Our trunk health (Continuous Integration signals) can be found at hud.pytorch.org.
-
-More About PyTorch
-A GPU-Ready Tensor Library
-Dynamic Neural Networks: Tape-Based Autograd
-Python First
-Imperative Experiences
-Fast and Lean
-Extensions Without Pain
-Installation
-Binaries
-NVIDIA Jetson Platforms
-From Source
-Prerequisites
-NVIDIA CUDA Support
-AMD ROCm Support
-Intel GPU Support
-Install Dependencies
-Get the PyTorch Source
-Install PyTorch
-Adjust Build Options (Optional)
-Docker Image
-Using pre-built images
-Building the image yourself
-Building the Documentation
-Previous Versions
-Getting Started
-Resources
-Communication
-Releases and Contributing
-The Team
-License
-More About PyTorch
-Learn the basics of PyTorch
-
-At a granular level, PyTorch is a library that consists of the following components:
-
-Component	Description
-torch	A Tensor library like NumPy, with strong GPU support
-torch.autograd	A tape-based automatic differentiation library that supports all differentiable Tensor operations in torch
-torch.jit	A compilation stack (TorchScript) to create serializable and optimizable models from PyTorch code
-torch.nn	A neural networks library deeply integrated with autograd designed for maximum flexibility
-torch.multiprocessing	Python multiprocessing, but with magical memory sharing of torch Tensors across processes. Useful for data loading and Hogwild training
-torch.utils	DataLoader and other utility functions for convenience
-Usually, PyTorch is used either as:
-
-A replacement for NumPy to use the power of GPUs.
-A deep learning research platform that provides maximum flexibility and speed.
-Elaborating Further:
-
-A GPU-Ready Tensor Library
-If you use NumPy, then you have used Tensors (a.k.a. ndarray).
-
-Tensor illustration
-
-PyTorch provides Tensors that can live either on the CPU or the GPU and accelerates the computation by a huge amount.
-
-We provide a wide variety of tensor routines to accelerate and fit your scientific computation needs such as slicing, indexing, mathematical operations, linear algebra, reductions. And they are fast!
-
-Dynamic Neural Networks: Tape-Based Autograd
-PyTorch has a unique way of building neural networks: using and replaying a tape recorder.
-
-Most frameworks such as TensorFlow, Theano, Caffe, and CNTK have a static view of the world. One has to build a neural network and reuse the same structure again and again. Changing the way the network behaves means that one has to start from scratch.
-
-With PyTorch, we use a technique called reverse-mode auto-differentiation, which allows you to change the way your network behaves arbitrarily with zero lag or overhead. Our inspiration comes from several research papers on this topic, as well as current and past work such as torch-autograd, autograd, Chainer, etc.
-
-While this technique is not unique to PyTorch, it's one of the fastest implementations of it to date. You get the best of speed and flexibility for your crazy research.
-
-Dynamic graph
-
-Python First
-PyTorch is not a Python binding into a monolithic C++ framework. It is built to be deeply integrated into Python. You can use it naturally like you would use NumPy / SciPy / scikit-learn etc. You can write your new neural network layers in Python itself, using your favorite libraries and use packages such as Cython and Numba. Our goal is to not reinvent the wheel where appropriate.
-
-Imperative Experiences
-PyTorch is designed to be intuitive, linear in thought, and easy to use. When you execute a line of code, it gets executed. There isn't an asynchronous view of the world. When you drop into a debugger or receive error messages and stack traces, understanding them is straightforward. The stack trace points to exactly where your code was defined. We hope you never spend hours debugging your code because of bad stack traces or asynchronous and opaque execution engines.
-
-Fast and Lean
-PyTorch has minimal framework overhead. We integrate acceleration libraries such as Intel MKL and NVIDIA (cuDNN, NCCL) to maximize speed. At the core, its CPU and GPU Tensor and neural network backends are mature and have been tested for years.
-
-Hence, PyTorch is quite fast — whether you run small or large neural networks.
-
-The memory usage in PyTorch is extremely efficient compared to Torch or some of the alternatives. We've written custom memory allocators for the GPU to make sure that your deep learning models are maximally memory efficient. This enables you to train bigger deep learning models than before.
-
-Extensions Without Pain
-Writing new neural network modules, or interfacing with PyTorch's Tensor API was designed to be straightforward and with minimal abstractions.
-
-You can write new neural network layers in Python using the torch API or your favorite NumPy-based libraries such as SciPy.
-
-If you want to write your layers in C/C++, we provide a convenient extension API that is efficient and with minimal boilerplate. No wrapper code needs to be written. You can see a tutorial here and an example here.
-
-Installation
+# Installation
 Binaries
 Commands to install binaries via Conda or pip wheels are on our website: https://pytorch.org/get-started/locally/
 
-NVIDIA Jetson Platforms
+# NVIDIA Jetson Platforms
 Python wheels for NVIDIA's Jetson Nano, Jetson TX1/TX2, Jetson Xavier NX/AGX, and Jetson AGX Orin are provided here and the L4T container is published here
 
 They require JetPack 4.2 and above, and @dusty-nv and @ptrblck are maintaining them.
@@ -186,13 +85,13 @@ conda install -c pytorch magma-cuda110  # or the magma-cuda* that matches your C
 # (optional) If using torch.compile with inductor/triton, install the matching version of triton
 # Run from the pytorch directory after cloning
 make triton
-On MacOS
+# On MacOS
 
 # Add this package on intel x86 processor machines only
 conda install intel::mkl-static intel::mkl-include
 # Add these packages if torch.distributed is needed
 conda install pkg-config libuv
-On Windows
+# On Windows
 
 conda install intel::mkl-static intel::mkl-include
 # Add these packages if torch.distributed is needed.
@@ -205,7 +104,7 @@ cd pytorch
 git submodule sync
 git submodule update --init --recursive
 Install PyTorch
-On Linux
+# On Linux
 
 If you would like to compile PyTorch with new C++ ABI enabled, then first run this command:
 
@@ -225,10 +124,10 @@ collect2: error: ld returned 1 exit status
 error: command 'g++' failed with exit status 1
 This is caused by ld from the Conda environment shadowing the system ld. You should use a newer version of Python that fixes this issue. The recommended Python version is 3.8.1+.
 
-On macOS
+# On macOS
 
 python3 setup.py develop
-On Windows
+# On Windows
 
 Choose Correct Visual Studio Version.
 
@@ -279,17 +178,17 @@ python setup.py develop
 Adjust Build Options (Optional)
 You can adjust the configuration of cmake variables optionally (without building first), by doing the following. For example, adjusting the pre-detected directories for CuDNN or BLAS can be done with such a step.
 
-On Linux
+# On Linux
 
 export CMAKE_PREFIX_PATH=${CONDA_PREFIX:-"$(dirname $(which conda))/../"}
 python setup.py build --cmake-only
 ccmake build  # or cmake-gui build
-On macOS
+# On macOS
 
 export CMAKE_PREFIX_PATH=${CONDA_PREFIX:-"$(dirname $(which conda))/../"}
 MACOSX_DEPLOYMENT_TARGET=10.9 CC=clang CXX=clang++ python setup.py build --cmake-only
 ccmake build  # or cmake-gui build
-Docker Image
+# Docker Image
 Using pre-built images
 You can also pull a pre-built docker image from Docker Hub and run with docker v19.03+
 
@@ -315,7 +214,7 @@ You can then build the documentation by running make <format> from the docs/ fol
 
 If you get a katex error run npm install katex. If it persists, try npm install -g katex
 
-Note: if you installed nodejs with a different package manager (e.g., conda) then npm will probably install a version of katex that is not compatible with your version of nodejs and doc builds will fail. A combination of versions that is known to work is node@6.13.1 and katex@0.13.18. To install the latter with npm you can run npm install -g katex@0.13.18
+# Note: if you installed nodejs with a different package manager (e.g., conda) then npm will probably install a version of katex that is not compatible with your version of nodejs and doc builds will fail. A combination of versions that is known to work is node@6.13.1 and katex@0.13.18. To install the latter with npm you can run npm install -g katex@0.13.18
 
 Previous Versions
 Installation instructions and binaries for previous PyTorch versions may be found on our website.
@@ -359,4 +258,3 @@ PyTorch is a community-driven project with several skillful engineers and resear
 
 PyTorch is currently maintained by Soumith Chintala, Gregory Chanan, Dmytro Dzhulgakov, Edward Yang, and Nikita Shulga with major contributions coming from hundreds of talented individuals in various forms and means. A non-exhaustive but growing list needs to mention: Trevor Killeen, Sasank Chilamkurthy, Sergey Zagoruyko, Adam Lerer, Francisco Massa, Alykhan Tejani, Luca Antiga, Alban Desmaison, Andreas Koepf, James Bradbury, Zeming Lin, Yuandong Tian, Guillaume Lample, Marat Dukhan, Natalia Gimelshein, Christian Sarofeen, Martin Raison, Edward Yang, Zachary Devito.
 
-Note: This project is unrelated to hughperkins/pytorch with the same name. Hugh is a valuable contributor to the Torch community and has helped with many things Torch and PyTorch.
